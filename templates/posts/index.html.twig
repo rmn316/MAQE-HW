@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block title %}Posts{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}" />
+{% endblock %}
+{% block body %}
+    <h1>MAQE Forums</h1>
+    <h2>Subtitle</h2>
+    <h3>Posts</h3>
+
+    <ul>
+        {% for post in posts %}
+            <li class="post">
+                <div class="image">
+                    <img src="{{ post.image_url }}" alt="">
+                </div>
+                <div class="content">
+                    <h4>{{ post.title }}</h4>
+                    <p>{{ post.body }}</p>
+                    <div class="date">{{ post.created_at | date('d/m/y') }}</div>
+                </div>
+                <div class="author">
+                    <div class="image"><img src="{{ post.author.avatar_url }}" alt="" /></div>
+                    <div class="name">{{ post.author.name }}</div>
+                    <div class="role">{{ post.author.role }}</div>
+                    <div class="map">{{ post.author.place }}</div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <ul>
+            <li><a href="#">Previous</a></li>
+            {% for pageNumber in range(1, 8) %}
+            <li><a href="#" class="page-number {{ pageNumber == 1 ? 'active' }}">{{ pageNumber }}</a></li>
+            {% endfor %}
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,114 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import '~font-awesome/scss/font-awesome';
+
+$border-color: rgba(187, 187, 187, 1);
+
+body {
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.post {
+    box-shadow: 0 2px 5px 0 $border-color;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+
+    &:nth-of-type(even) {
+        background-color:#F0F0F0;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 2vh;
+    }
+
+    .image img {
+        width: 150px;
+    }
+
+    .content {
+        flex-grow: 1;
+        padding: 0 15px;
+        * {
+            margin: 0 0 1vh;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .date {
+            @extend .fa;
+            @extend .fa-clock-o;
+            &:before {
+                margin-right: 5px;
+            }
+            font-weight: lighter;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+    }
+
+    .author {
+        border-left: 1px solid $border-color;
+        padding: 1vh 2vh;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        min-width: 150px;
+
+        * {
+            margin-bottom: 0.5vh;
+        }
+
+        .image img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .name {
+            font-size: 1.15rem;
+            color:rgb(220, 63, 35);
+        }
+
+        .role {
+            font-size: 1rem;
+        }
+
+        .map {
+            @extend .fa;
+            @extend .fa-map-marker;
+            &:before {
+                margin-right: 5px;
+            }
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.pagination {
+    margin-top:2rem;
+    ul {
+        display: flex;
+        justify-content: center;
+
+        list-style: none;
+        li a {
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 2px;
+            color: black;
+
+            &.active {
+                border: 1px solid red;
+                border-radius: 15rem;
+
+                color: white;
+                background-color: red;
+            }
+        }
+    }
+}
